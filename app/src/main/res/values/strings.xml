@@ -3,7 +3,7 @@
 
     <string name="app_name">Wiki Image Search</string>
     <string name="action_settings">Settings</string>
-    <string name="description">Hello world!</string>
+    <string name="description">Search for images in wiki by putting keywords</string>
     <string name="search_image">Search</string>
     <string name="search_title">Search Result for</string>
     <string name="clear_history">Clear History</string>

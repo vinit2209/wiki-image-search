@@ -69,7 +69,7 @@ public class SearchableActivity extends AppCompatActivity {
                     MySuggestionProvider.AUTHORITY, MySuggestionProvider.MODE);
             suggestions.saveRecentQuery(query, null);
             getSupportActionBar().setTitle(getResources().getString(R.string.search_title) + " " + query);
-
+            showSearchResult(query);
         }
     }
 
@@ -122,7 +122,7 @@ public class SearchableActivity extends AppCompatActivity {
                                         thumbnail.setWidth(thumbnailJSON.getInt("width"));
                                         thumbnail.setHeight(thumbnailJSON.getInt("height"));
                                     } else {
-                                        thumbnail.setSource(null);
+                                        thumbnail.setSource("-1");
                                         thumbnail.setWidth(urlConfig.getThumbSize());
                                         thumbnail.setHeight(urlConfig.getThumbSize());
                                     }

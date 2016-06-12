@@ -94,7 +94,7 @@ public class MainActivity extends AppCompatActivity
             return false;
         }
         else{
-            Toast.makeText(this, getResources().getString(R.string.searchclear_history), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getResources().getString(R.string.nw_not_con), Toast.LENGTH_SHORT).show();
             return true;
         }
     }

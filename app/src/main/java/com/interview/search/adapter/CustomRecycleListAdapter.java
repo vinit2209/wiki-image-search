@@ -3,6 +3,7 @@ package com.interview.search.adapter;
 /**
  * Created by Vinit sharma on 11-06-2016.
  */
+
 import java.util.List;
 
 import android.content.Context;
@@ -18,6 +19,7 @@ import com.android.volley.toolbox.NetworkImageView;
 import com.interview.search.R;
 import com.interview.search.app.AppController;
 import com.interview.search.model.ImageObject;
+import com.interview.search.model.Thumbnail;
 
 public class CustomRecycleListAdapter extends RecyclerView.Adapter<CustomRecycleListAdapter.ViewHolder> {
     private List<ImageObject> mDataset;
@@ -58,12 +60,11 @@ public class CustomRecycleListAdapter extends RecyclerView.Adapter<CustomRecycle
         ImageObject item = mDataset.get(position);
         if (item != null) {
             holder.title.setText(item.getTitle());
-            holder.thumbnail.setErrorImageResId(R.drawable.img_not_available);
-            holder.thumbnail.setDefaultImageResId(R.drawable.wiki_default);
 
-            if (item.getThumbnail() != null) {
-                int height = item.getThumbnail().getHeight();
-                int width = item.getThumbnail().getWidth();
+            Thumbnail thumbnail = item.getThumbnail();
+            if (thumbnail != null) {
+                int height = thumbnail.getHeight();
+                int width = thumbnail.getWidth();
                 int size = (height >= width ? height : width);
                 RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(
                         size,
@@ -71,8 +72,10 @@ public class CustomRecycleListAdapter extends RecyclerView.Adapter<CustomRecycle
 
                 layoutParams.addRule(RelativeLayout.CENTER_HORIZONTAL, RelativeLayout.TRUE);
                 holder.thumbnail.setLayoutParams(layoutParams);
+                holder.thumbnail.setDefaultImageResId(R.drawable.wiki_default);
+                holder.thumbnail.setErrorImageResId(R.drawable.img_not_available);
+                holder.thumbnail.setImageUrl(thumbnail.getSource(), imageLoader);
 
-                    holder.thumbnail.setImageUrl(item.getThumbnail().getSource(), imageLoader);
 
             }
         }
